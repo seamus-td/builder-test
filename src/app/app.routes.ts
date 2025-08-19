@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
-import { ProgramCardComponent } from "./components/program-card/program-card.component";
+import { FindProgramsComponent } from "./pages/find-programs/find-programs.component";
 
 export const routes: Routes = [
-  { path: "", component: ProgramCardComponent },
-  { path: "find-programs", component: ProgramCardComponent },
+  { path: "", component: FindProgramsComponent },
+  { path: "find-programs", component: FindProgramsComponent },
 ];
