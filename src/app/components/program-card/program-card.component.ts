@@ -27,30 +27,6 @@ interface Program {
           [alt]="program.title"
           class="w-full h-48 object-cover"
         />
-
-        <!-- Featured Badge -->
-        <div
-          *ngIf="program.featured"
-          class="absolute top-2 left-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded"
-        >
-          Featured
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="absolute top-2 right-2 flex gap-2">
-          <button
-            class="w-8 h-8 bg-white bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-opacity"
-          >
-            <i class="material-icons text-gray-700 text-base"
-              >favorite_border</i
-            >
-          </button>
-          <button
-            class="w-8 h-8 bg-white bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-opacity"
-          >
-            <i class="material-icons text-gray-700 text-base">share</i>
-          </button>
-        </div>
       </div>
 
       <!-- Content Section -->
@@ -64,7 +40,7 @@ interface Program {
         </h3>
 
         <!-- Location with proper icon styling -->
-        <div class="flex items-center mb-4">
+        <div class="flex items-center mb-3">
           <i
             class="material-icons text-base mr-1"
             style="color: #4B5563; font-size: 16px;"
@@ -73,12 +49,6 @@ interface Program {
           <span class="text-sm" style="color: #4B5563;">{{
             program.locations[0]
           }}</span>
-          <div
-            *ngIf="program.locations.length > 1"
-            class="text-sm text-blue-600 font-semibold ml-1"
-          >
-            + {{ program.locations.length - 1 }} more
-          </div>
         </div>
 
         <!-- Season with proper spacing -->
@@ -88,7 +58,7 @@ interface Program {
 
         <!-- Description with exact line height -->
         <p
-          class="text-sm line-clamp-2"
+          class="text-sm line-clamp-3"
           style="color: #374151; line-height: 20px;"
         >
           {{ program.description }}
