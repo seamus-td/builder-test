@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+.env
+/dist
+/build
+/coverage
+.vscode
+.idea
+.cache
+.eslintcache
+.DS_Store
+.angular
