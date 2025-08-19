@@ -1,0 +1,81 @@
+// Custom styles for the find programs page
+
+// Checkbox styling when selected
+input[type="checkbox"]:checked {
+  background-color: #0075FF;
+  border-color: #0075FF;
+}
+
+// Smooth transitions for interactive elements
+.transition-all {
+  transition: all 0.2s ease-in-out;
+}
+
+// Hover effects for filter items
+.filter-item:hover {
+  background-color: #f8f9fa;
+}
+
+// Active tab indicator
+.tab-active {
+  border-bottom: 2px solid #2563EB;
+  color: #2563EB;
+  font-weight: 600;
+}
+
+// Sort dropdown animation
+.sort-dropdown {
+  transform-origin: top;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+// Program cards responsive grid
+@media (max-width: 768px) {
+  .programs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .programs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .programs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Mobile responsive adjustments
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    width: 100%;
+  }
+}
