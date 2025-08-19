@@ -16,7 +16,7 @@ interface Program {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="w-full max-w-sm bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+    <div class="w-full bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
          style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -2px rgba(0, 0, 0, 0.10);">
       <!-- Image Section -->
       <div class="relative">
