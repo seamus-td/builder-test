@@ -1,0 +1,6 @@
+<div class="avatar">
+  <img *ngIf="imageUrl; else initials" [src]="imageUrl" [alt]="name" />
+  <ng-template #initials>
+    <span>{{ name.charAt(0) }}</span>
+  </ng-template>
+</div>
