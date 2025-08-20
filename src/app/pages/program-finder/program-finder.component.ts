@@ -270,22 +270,22 @@ export class ProgramFinderComponent {
   }
 
   removeFilter(filterToRemove: string) {
-    const filters = { ...this.currentFilters() };
-    
+    const filters = { ...this.currentFilters };
+
     // Remove from all filter arrays
     Object.keys(filters).forEach(key => {
       if (Array.isArray(filters[key])) {
         filters[key] = filters[key].filter((item: string) => item !== filterToRemove);
       }
     });
-    
-    this.currentFilters.set(filters);
+
+    this.currentFilters = filters;
     this.applyFilters();
   }
 
   clearAllFilters() {
-    this.currentFilters.set({});
-    this.searchQuery.set('');
+    this.currentFilters = {};
+    this.searchQuery = '';
     this.applyFilters();
   }
 }
