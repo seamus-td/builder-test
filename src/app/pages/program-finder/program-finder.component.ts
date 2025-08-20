@@ -26,9 +26,11 @@ import { Program } from '../../components/program-card/program-card.model';
         <!-- Page Title -->
         <h1 class="text-4xl font-bold text-gray-900 mb-8">Find a program</h1>
 
-        <div class="flex gap-8">
+        <div class="flex flex-col lg:flex-row gap-8">
           <!-- Filter Sidebar -->
-          <app-filter-sidebar (filtersChanged)="onFiltersChanged($event)"></app-filter-sidebar>
+          <div class="lg:w-80 w-full">
+            <app-filter-sidebar (filtersChanged)="onFiltersChanged($event)"></app-filter-sidebar>
+          </div>
 
           <!-- Main Content Area -->
           <div class="flex-1">
