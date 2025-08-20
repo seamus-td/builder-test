@@ -80,19 +80,19 @@ import { Program } from '../../components/program-card/program-card.model';
               <div class="flex items-center space-x-4">
                 <!-- Active Filters -->
                 <div *ngIf="activeFilters().length > 0" class="flex items-center space-x-2">
-                  <div 
-                    *ngFor="let filter of activeFilters()" 
+                  <div
+                    *ngFor="let filter of activeFilters()"
                     class="flex items-center bg-gray-200 rounded-full px-3 py-1 text-sm"
                   >
                     <span class="text-gray-800">{{ filter }}</span>
-                    <button 
+                    <button
                       (click)="removeFilter(filter)"
                       class="ml-2 text-gray-600 hover:text-gray-800"
                     >
                       <span class="text-xs">×</span>
                     </button>
                   </div>
-                  <button 
+                  <button
                     (click)="clearAllFilters()"
                     class="text-sm text-blue-600 font-semibold hover:text-blue-800"
                   >
@@ -100,22 +100,22 @@ import { Program } from '../../components/program-card/program-card.model';
                   </button>
                 </div>
               </div>
-              
+
               <span class="text-base font-semibold text-gray-600">
-                {{ filteredPrograms().length }} Results
+                {{ filteredPrograms.length }} Results
               </span>
             </div>
 
             <!-- Program Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <app-program-card 
-                *ngFor="let program of filteredPrograms()" 
+              <app-program-card
+                *ngFor="let program of filteredPrograms"
                 [program]="program"
               ></app-program-card>
             </div>
 
             <!-- Empty State -->
-            <div *ngIf="filteredPrograms().length === 0" class="text-center py-12">
+            <div *ngIf="filteredPrograms.length === 0" class="text-center py-12">
               <span class="material-icons text-gray-400 text-6xl mb-4">search_off</span>
               <h3 class="text-lg font-medium text-gray-900 mb-2">No programs found</h3>
               <p class="text-gray-600">Try adjusting your search criteria or filters.</p>
