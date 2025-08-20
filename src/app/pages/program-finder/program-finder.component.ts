@@ -127,10 +127,10 @@ import { Program } from '../../components/program-card/program-card.model';
   `
 })
 export class ProgramFinderComponent {
-  searchQuery = signal('');
+  searchQuery = '';
   selectedTab = 'All';
   sortBy = 'alphabetical';
-  currentFilters = signal<any>({});
+  currentFilters: any = {};
 
   tabs = ['All', 'Previously viewed', 'Saved'];
 
