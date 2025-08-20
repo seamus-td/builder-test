@@ -246,11 +246,11 @@ export class ProgramFinderComponent {
         break;
     }
 
-    this.filteredPrograms.set(filtered);
+    this.filteredPrograms = filtered;
   }
 
   activeFilters(): string[] {
-    const filters = this.currentFilters();
+    const filters = this.currentFilters;
     const active: string[] = [];
     
     if (filters.countries?.length > 0) {
