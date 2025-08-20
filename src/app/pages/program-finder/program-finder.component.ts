@@ -185,10 +185,10 @@ export class ProgramFinderComponent {
     }
   ];
 
-  filteredPrograms = signal<Program[]>(this.programs);
+  filteredPrograms: Program[] = this.programs;
 
   onFiltersChanged(filters: any) {
-    this.currentFilters.set(filters);
+    this.currentFilters = filters;
     this.applyFilters();
   }
 
@@ -202,8 +202,8 @@ export class ProgramFinderComponent {
 
   applyFilters() {
     let filtered = [...this.programs];
-    const filters = this.currentFilters();
-    const searchTerm = this.searchQuery().toLowerCase();
+    const filters = this.currentFilters;
+    const searchTerm = this.searchQuery.toLowerCase();
 
     // Apply search filter
     if (searchTerm) {
