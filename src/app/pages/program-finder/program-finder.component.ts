@@ -49,14 +49,14 @@ import { Program } from '../../components/program-card/program-card.model';
             </div>
 
             <!-- Sort and Tab Controls -->
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 space-y-4 md:space-y-0">
               <!-- Tabs -->
-              <div class="flex space-x-8">
-                <button 
-                  *ngFor="let tab of tabs" 
+              <div class="flex space-x-4 md:space-x-8 overflow-x-auto">
+                <button
+                  *ngFor="let tab of tabs"
                   (click)="selectedTab = tab"
                   [class]="selectedTab === tab ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'"
-                  class="pb-2 font-medium"
+                  class="pb-2 font-medium whitespace-nowrap"
                 >
                   {{ tab }}
                 </button>
@@ -65,7 +65,7 @@ import { Program } from '../../components/program-card/program-card.model';
               <!-- Sort Controls -->
               <div class="flex items-center space-x-4">
                 <span class="text-sm text-gray-600">Sort by</span>
-                <select 
+                <select
                   [(ngModel)]="sortBy"
                   (change)="onSortChange()"
                   class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500"
