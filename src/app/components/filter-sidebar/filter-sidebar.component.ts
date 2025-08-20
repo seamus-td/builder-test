@@ -14,7 +14,7 @@ interface Filter {
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <aside class="w-80 bg-white rounded-lg shadow-sm p-6 h-fit">
+    <aside class="w-full lg:w-80 bg-white rounded-lg shadow-sm p-6 h-fit">
       <!-- Filter Header -->
       <div class="flex items-center space-x-2 mb-6">
         <span class="material-icons text-2xl text-gray-900">filter_list</span>
