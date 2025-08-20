@@ -1,20 +1,20 @@
-import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UniversityHeaderComponent } from '../../components/university-header/university-header.component';
-import { FilterSidebarComponent } from '../../components/filter-sidebar/filter-sidebar.component';
-import { ProgramCardComponent } from '../../components/program-card/program-card.component';
-import { Program } from '../../components/program-card/program-card.model';
+import { Component, signal } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { UniversityHeaderComponent } from "../../components/university-header/university-header.component";
+import { FilterSidebarComponent } from "../../components/filter-sidebar/filter-sidebar.component";
+import { ProgramCardComponent } from "../../components/program-card/program-card.component";
+import { Program } from "../../components/program-card/program-card.model";
 
 @Component({
-  selector: 'app-program-finder',
+  selector: "app-program-finder",
   standalone: true,
   imports: [
-    CommonModule, 
-    FormsModule, 
-    UniversityHeaderComponent, 
-    FilterSidebarComponent, 
-    ProgramCardComponent
+    CommonModule,
+    FormsModule,
+    UniversityHeaderComponent,
+    FilterSidebarComponent,
+    ProgramCardComponent,
   ],
   template: `
     <!-- Header -->
@@ -29,7 +29,9 @@ import { Program } from '../../components/program-card/program-card.model';
         <div class="flex flex-col lg:flex-row gap-8">
           <!-- Filter Sidebar -->
           <div class="lg:w-80 w-full">
-            <app-filter-sidebar (filtersChanged)="onFiltersChanged($event)"></app-filter-sidebar>
+            <app-filter-sidebar
+              (filtersChanged)="onFiltersChanged($event)"
+            ></app-filter-sidebar>
           </div>
 
           <!-- Main Content Area -->
@@ -43,19 +45,27 @@ import { Program } from '../../components/program-card/program-card.model';
                 placeholder="Search programs..."
                 class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
-              <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <span
+                class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+              >
                 search
               </span>
             </div>
 
             <!-- Sort and Tab Controls -->
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 space-y-4 md:space-y-0">
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 space-y-4 md:space-y-0"
+            >
               <!-- Tabs -->
               <div class="flex space-x-4 md:space-x-8 overflow-x-auto">
                 <button
                   *ngFor="let tab of tabs"
                   (click)="selectedTab = tab"
-                  [class]="selectedTab === tab ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'"
+                  [class]="
+                    selectedTab === tab
+                      ? 'text-blue-600 border-b-2 border-blue-600'
+                      : 'text-gray-600'
+                  "
                   class="pb-2 font-medium whitespace-nowrap"
                 >
                   {{ tab }}
@@ -78,10 +88,15 @@ import { Program } from '../../components/program-card/program-card.model';
             </div>
 
             <!-- Results Count and Active Filters -->
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 space-y-4 md:space-y-0">
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 space-y-4 md:space-y-0"
+            >
               <div class="flex flex-wrap items-center gap-2">
                 <!-- Active Filters -->
-                <div *ngIf="activeFilters().length > 0" class="flex flex-wrap items-center gap-2">
+                <div
+                  *ngIf="activeFilters().length > 0"
+                  class="flex flex-wrap items-center gap-2"
+                >
                   <div
                     *ngFor="let filter of activeFilters()"
                     class="flex items-center bg-gray-200 rounded-full px-3 py-1 text-sm"
@@ -117,74 +132,99 @@ import { Program } from '../../components/program-card/program-card.model';
             </div>
 
             <!-- Empty State -->
-            <div *ngIf="filteredPrograms.length === 0" class="text-center py-12">
-              <span class="material-icons text-gray-400 text-6xl mb-4">search_off</span>
-              <h3 class="text-lg font-medium text-gray-900 mb-2">No programs found</h3>
-              <p class="text-gray-600">Try adjusting your search criteria or filters.</p>
+            <div
+              *ngIf="filteredPrograms.length === 0"
+              class="text-center py-12"
+            >
+              <span class="material-icons text-gray-400 text-6xl mb-4"
+                >search_off</span
+              >
+              <h3 class="text-lg font-medium text-gray-900 mb-2">
+                No programs found
+              </h3>
+              <p class="text-gray-600">
+                Try adjusting your search criteria or filters.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class ProgramFinderComponent {
-  searchQuery = '';
-  selectedTab = 'All';
-  sortBy = 'alphabetical';
+  searchQuery = "";
+  selectedTab = "All";
+  sortBy = "alphabetical";
   currentFilters: any = {};
 
-  tabs = ['All', 'Previously viewed', 'Saved'];
+  tabs = ["All", "Previously viewed", "Saved"];
 
   programs: Program[] = [
     {
-      id: '1',
-      title: 'Study Abroad in Paris',
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/764c0093af4bd2a8a1455ba91ea8c83e70df0fa7?width=712',
-      location: 'Paris, France',
-      terms: 'FALL, SPRING',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.'
+      id: "1",
+      title: "Study Abroad in Paris",
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/764c0093af4bd2a8a1455ba91ea8c83e70df0fa7?width=712",
+      location: "Paris, France",
+      terms: "FALL, SPRING",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.",
     },
     {
-      id: '2',
-      title: 'Study Abroad in Melbourne',
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/0dc66f7c97d6a3a9d001a46e1b9438dcdaffe369?width=712',
-      location: 'Melbourne, Australia',
-      terms: 'FALL, SPRING',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.'
+      id: "2",
+      title: "Study Abroad in Melbourne",
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/0dc66f7c97d6a3a9d001a46e1b9438dcdaffe369?width=712",
+      location: "Melbourne, Australia",
+      terms: "FALL, SPRING",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.",
     },
     {
-      id: '3',
-      title: 'Study Abroad Program In This Country If a Longer Title It Goes Into 2 Lines',
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/a29b9af10568e4e6eff17aeef0063d91c8bb84cf?width=712',
-      location: 'Sydney, Australia',
-      terms: 'SUMMER',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.'
+      id: "3",
+      title:
+        "Study Abroad Program In This Country If a Longer Title It Goes Into 2 Lines",
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/a29b9af10568e4e6eff17aeef0063d91c8bb84cf?width=712",
+      location: "Sydney, Australia",
+      terms: "SUMMER",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.",
     },
     {
-      id: '4',
-      title: 'Study Abroad Program In This Country If a Longer Title It Goes Into 2 Lines',
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/a58a4065ffa5941d01cbf261c3f7d1e6080d69c1?width=712',
-      location: 'London, England',
-      terms: 'FALL',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.'
+      id: "4",
+      title:
+        "Study Abroad Program In This Country If a Longer Title It Goes Into 2 Lines",
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/a58a4065ffa5941d01cbf261c3f7d1e6080d69c1?width=712",
+      location: "London, England",
+      terms: "FALL",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.",
     },
     {
-      id: '5',
-      title: 'Study Abroad Program In This Country If a Longer Title It Goes Into 2 Lines',
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/06f18572d999f9f53976185d600ee5f723ea8d6f?width=712',
-      location: 'Chamonix, France',
-      terms: 'SPRING',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.'
+      id: "5",
+      title:
+        "Study Abroad Program In This Country If a Longer Title It Goes Into 2 Lines",
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/06f18572d999f9f53976185d600ee5f723ea8d6f?width=712",
+      location: "Chamonix, France",
+      terms: "SPRING",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.",
     },
     {
-      id: '6',
-      title: 'Study Abroad Program In This Country If a Longer Title It Goes Into 2 Lines',
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/98cdc865b0f7ef65c852040146b69292785e6922?width=712',
-      location: 'Amsterdam, Netherlands',
-      terms: 'SPRING',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.'
-    }
+      id: "6",
+      title:
+        "Study Abroad Program In This Country If a Longer Title It Goes Into 2 Lines",
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/98cdc865b0f7ef65c852040146b69292785e6922?width=712",
+      location: "Amsterdam, Netherlands",
+      terms: "SPRING",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.",
+    },
   ];
 
   filteredPrograms: Program[] = this.programs;
@@ -209,41 +249,42 @@ export class ProgramFinderComponent {
 
     // Apply search filter
     if (searchTerm) {
-      filtered = filtered.filter(program => 
-        program.title.toLowerCase().includes(searchTerm) ||
-        program.location.toLowerCase().includes(searchTerm) ||
-        program.description.toLowerCase().includes(searchTerm)
+      filtered = filtered.filter(
+        (program) =>
+          program.title.toLowerCase().includes(searchTerm) ||
+          program.location.toLowerCase().includes(searchTerm) ||
+          program.description.toLowerCase().includes(searchTerm),
       );
     }
 
     // Apply country filter
     if (filters.countries?.length > 0) {
-      filtered = filtered.filter(program => 
-        filters.countries.some((country: string) => 
-          program.location.toLowerCase().includes(country.toLowerCase())
-        )
+      filtered = filtered.filter((program) =>
+        filters.countries.some((country: string) =>
+          program.location.toLowerCase().includes(country.toLowerCase()),
+        ),
       );
     }
 
     // Apply terms filter
     if (filters.terms?.length > 0) {
-      filtered = filtered.filter(program => 
-        filters.terms.some((term: string) => 
-          program.terms.toLowerCase().includes(term.toLowerCase())
-        )
+      filtered = filtered.filter((program) =>
+        filters.terms.some((term: string) =>
+          program.terms.toLowerCase().includes(term.toLowerCase()),
+        ),
       );
     }
 
     // Apply sorting
     switch (this.sortBy) {
-      case 'alphabetical':
+      case "alphabetical":
         filtered.sort((a, b) => a.title.localeCompare(b.title));
         break;
-      case 'newest':
+      case "newest":
         // In a real app, this would sort by date
         filtered.reverse();
         break;
-      case 'popularity':
+      case "popularity":
         // In a real app, this would sort by popularity score
         break;
     }
@@ -254,7 +295,7 @@ export class ProgramFinderComponent {
   activeFilters(): string[] {
     const filters = this.currentFilters;
     const active: string[] = [];
-    
+
     if (filters.countries?.length > 0) {
       active.push(...filters.countries);
     }
@@ -267,7 +308,7 @@ export class ProgramFinderComponent {
     if (filters.regions?.length > 0) {
       active.push(...filters.regions);
     }
-    
+
     return active;
   }
 
@@ -275,9 +316,11 @@ export class ProgramFinderComponent {
     const filters = { ...this.currentFilters };
 
     // Remove from all filter arrays
-    Object.keys(filters).forEach(key => {
+    Object.keys(filters).forEach((key) => {
       if (Array.isArray(filters[key])) {
-        filters[key] = filters[key].filter((item: string) => item !== filterToRemove);
+        filters[key] = filters[key].filter(
+          (item: string) => item !== filterToRemove,
+        );
       }
     });
 
@@ -287,7 +330,7 @@ export class ProgramFinderComponent {
 
   clearAllFilters() {
     this.currentFilters = {};
-    this.searchQuery = '';
+    this.searchQuery = "";
     this.applyFilters();
   }
 }

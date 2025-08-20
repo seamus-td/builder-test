@@ -38,7 +38,11 @@ interface Program {
 
         <!-- Location with icon -->
         <div class="flex items-center mb-4">
-          <span class="material-icons text-gray-600 mr-2" style="font-size: 16px;">location_on</span>
+          <span
+            class="material-icons text-gray-600 mr-2"
+            style="font-size: 16px;"
+            >location_on</span
+          >
           <span class="text-sm text-gray-600">{{ program.location }}</span>
         </div>
 
