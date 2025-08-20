@@ -78,10 +78,10 @@ import { Program } from '../../components/program-card/program-card.model';
             </div>
 
             <!-- Results Count and Active Filters -->
-            <div class="flex items-center justify-between mb-6">
-              <div class="flex items-center space-x-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 space-y-4 md:space-y-0">
+              <div class="flex flex-wrap items-center gap-2">
                 <!-- Active Filters -->
-                <div *ngIf="activeFilters().length > 0" class="flex items-center space-x-2">
+                <div *ngIf="activeFilters().length > 0" class="flex flex-wrap items-center gap-2">
                   <div
                     *ngFor="let filter of activeFilters()"
                     class="flex items-center bg-gray-200 rounded-full px-3 py-1 text-sm"
@@ -96,7 +96,7 @@ import { Program } from '../../components/program-card/program-card.model';
                   </div>
                   <button
                     (click)="clearAllFilters()"
-                    class="text-sm text-blue-600 font-semibold hover:text-blue-800"
+                    class="text-sm text-blue-600 font-semibold hover:text-blue-800 ml-2"
                   >
                     Remove filters
                   </button>
