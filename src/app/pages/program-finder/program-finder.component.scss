@@ -1,0 +1,24 @@
+// Additional component-specific styles can be added here
+// Currently using Tailwind classes for styling
+
+// Custom program finder page styles if needed
+.program-grid {
+  // Custom grid styles can be added here if needed
+}
+
+.filter-section {
+  // Custom filter section styles can be added here if needed
+}
+
+// Responsive breakpoints and custom styles
+@media (max-width: 768px) {
+  // Mobile-specific styles if needed
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  // Tablet-specific styles if needed
+}
+
+@media (min-width: 1025px) {
+  // Desktop-specific styles if needed
+}
