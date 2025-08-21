@@ -12,7 +12,7 @@ interface FilterSection {
 @Component({
   selector: 'app-filter-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   template: `
     <aside class="w-80 bg-white rounded-lg shadow-sm p-6 h-fit">
       <!-- Header -->
