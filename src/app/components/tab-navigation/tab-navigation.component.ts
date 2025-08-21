@@ -11,17 +11,8 @@ interface Tab {
   selector: 'app-tab-navigation',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="flex items-center gap-6">
-      <button
-        *ngFor="let tab of tabs()"
-        (click)="selectTab(tab.id)"
-        [class]="getTabClasses(tab)"
-      >
-        {{ tab.label }}
-      </button>
-    </div>
-  `
+  templateUrl: './tab-navigation.component.html',
+  styleUrls: ['./tab-navigation.component.scss']
 })
 export class TabNavigationComponent {
   @Output() tabChange = new EventEmitter<string>();
