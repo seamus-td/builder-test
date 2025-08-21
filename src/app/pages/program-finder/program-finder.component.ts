@@ -42,16 +42,15 @@ import { Program } from '../../components/program-card/program-card.model';
               </app-enhanced-search>
             </div>
 
-            <!-- Sort and Results Info -->
-            <div class="flex items-center justify-between mb-6">
-              <div class="flex items-center gap-8">
-                <!-- Tab Navigation -->
-                <app-tab-navigation (tabChange)="onTabChange($event)"></app-tab-navigation>
-              </div>
+            <!-- Tab Navigation and Sort -->
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+              <!-- Tab Navigation -->
+              <app-tab-navigation (tabChange)="onTabChange($event)"></app-tab-navigation>
 
+              <!-- Sort dropdown -->
               <div class="flex items-center gap-4">
                 <span class="text-sm text-gray-600">Sort by</span>
-                <select class="border border-gray-300 rounded-md px-4 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select class="border border-gray-300 rounded-md px-4 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-0">
                   <option>Alphabetical (A - Z)</option>
                   <option>Alphabetical (Z - A)</option>
                   <option>Most Popular</option>
