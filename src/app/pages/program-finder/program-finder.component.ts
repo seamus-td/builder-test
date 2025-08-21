@@ -28,12 +28,12 @@ import { Program } from '../../components/program-card/program-card.model';
         <!-- Page Title -->
         <h1 class="text-4xl font-bold text-gray-900 mb-8">Find a program</h1>
 
-        <div class="flex gap-8">
+        <div class="flex flex-col lg:flex-row gap-8">
           <!-- Filter Sidebar -->
-          <app-filter-sidebar class="flex-shrink-0"></app-filter-sidebar>
+          <app-filter-sidebar class="flex-shrink-0 lg:w-80"></app-filter-sidebar>
 
           <!-- Main Content Area -->
-          <div class="flex-1">
+          <div class="flex-1 min-w-0">
             <!-- Search Bar -->
             <div class="mb-6">
               <app-enhanced-search 
