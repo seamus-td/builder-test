@@ -2,7 +2,7 @@ export interface Program {
   id: string;
   title: string;
   image: string;
-  locations: string[];
+  location: string;
   season: string;
   description: string;
   featured?: boolean;
