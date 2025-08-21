@@ -60,7 +60,7 @@ import { Program } from '../../components/program-card/program-card.model';
             </div>
 
             <!-- Active Filters -->
-            <div class="flex items-center gap-4 mb-6" *ngIf="hasActiveFilters">
+            <div class="flex flex-wrap items-center gap-4 mb-6" *ngIf="hasActiveFilters">
               <div class="flex items-center bg-gray-200 rounded-full px-3 py-1">
                 <span class="text-sm text-gray-900">Australia</span>
                 <button class="ml-2 text-gray-600 hover:text-gray-900">
@@ -73,7 +73,7 @@ import { Program } from '../../components/program-card/program-card.model';
             </div>
 
             <!-- Results Count -->
-            <div class="flex justify-end mb-6">
+            <div class="flex justify-between md:justify-end items-center mb-6">
               <span class="text-gray-700 font-semibold">{{ programs().length }} Results</span>
             </div>
 
