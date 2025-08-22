@@ -50,7 +50,11 @@ export class FilterSidebarComponent {
   }
 
   get hasActiveFilters(): boolean {
-    return this.acceptingApplications || 
+    return this.acceptingApplications ||
            this.filters.some(filter => filter.selectedOptions.length > 0);
+  }
+
+  filterTrackBy(index: number, filter: Filter): string {
+    return filter.id;
   }
 }
