@@ -22,7 +22,7 @@
         <div
           class="w-11 h-6 bg-gray-200 rounded-full cursor-pointer transition-colors duration-200"
           [class.bg-blue-600]="acceptingApplications"
-          (click)="onAcceptingApplicationsChange(!acceptingApplications)"
+          (click)="toggleAcceptingApplications()"
         >
           <div
             class="w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-200 ease-in-out"
