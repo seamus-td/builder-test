@@ -6,4 +6,8 @@ export interface Program {
   season: string;
   description: string;
   featured?: boolean;
+  country?: string;
+  terms?: string[];
+  programType?: string;
+  region?: string;
 }
