@@ -253,7 +253,7 @@ export class ProgramFinderComponent implements OnInit {
 
   private updateAppliedFilters(): void {
     const applied: Array<{id: string, label: string, value: string}> = [];
-    
+
     this.filters().forEach(filter => {
       filter.selectedOptions.forEach(selectedValue => {
         const option = filter.options.find(opt => opt.value === selectedValue);
@@ -266,7 +266,11 @@ export class ProgramFinderComponent implements OnInit {
         }
       });
     });
-    
+
     this.appliedFilters.set(applied);
+  }
+
+  programTrackBy(index: number, program: Program): string {
+    return program.id;
   }
 }
