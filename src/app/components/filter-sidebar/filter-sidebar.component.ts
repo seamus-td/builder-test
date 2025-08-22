@@ -82,6 +82,11 @@ export class FilterSidebarComponent {
     this.emitFiltersChange();
   }
 
+  toggleAcceptingApplications() {
+    this.acceptingApplications = !this.acceptingApplications;
+    this.emitFiltersChange();
+  }
+
   onFilterGroupChange(groupIndex: number, options: FilterOption[]) {
     this.filterGroups[groupIndex].options = options;
     this.emitFiltersChange();
