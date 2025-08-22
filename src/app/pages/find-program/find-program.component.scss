@@ -1,0 +1,80 @@
+// Custom styles for the find-program page
+
+// Ensure proper Material Icons display
+.material-icons {
+  font-feature-settings: 'liga';
+}
+
+// Smooth transitions for interactive elements
+button, a {
+  transition: all 0.2s ease-in-out;
+}
+
+// Custom select dropdown arrow positioning
+select {
+  background-image: none;
+}
+
+// Responsive grid adjustments
+.grid {
+  @media (min-width: 1536px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+// Filter tag hover effects
+.inline-flex {
+  &:hover {
+    background-color: #e5e7eb;
+  }
+}
+
+// Search input focus styles
+input[type="text"] {
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+}
+
+// Tab navigation active state
+nav button {
+  position: relative;
+  
+  &.border-b-2 {
+    border-bottom-width: 2px;
+  }
+}
+
+// Program card grid responsive adjustments
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1279px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+// Sidebar responsive behavior
+@media (max-width: 1023px) {
+  aside {
+    order: 2;
+  }
+  
+  .flex-col.lg\\:flex-row {
+    flex-direction: column;
+  }
+}
+
+// Header shadow matching design
+header {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+// Main content background matching design
+main {
+  background: linear-gradient(0deg, #F9FAFB 0%, #F9FAFB 100%), #FFF;
+}
