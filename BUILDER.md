@@ -1,10 +1,27 @@
-Rules for Builder.io
+Builder.io Rules
 
-- All code should match the existing style found in the repo. Look at src/app/components for style examples
-- Components available for use are found in src/app/components
-- Existing components are static and should never be modified
-- You are encouraged to use the components and create new components if necessary
-- Follow angular best practices and exisiting repo structure when creating new components
-- New components should have a .html, .scss, and .ts file.
+General
+Do not modify existing components in src/app/components. Create new ones if needed.
+Reuse before creating.
+Follow Angular Style Guide.
+
+Structure
+Each component in its own folder under src/app/components/.
+Must include: .ts, .html, .scss, .spec.ts.
+
+Naming
+Files: kebab-case (program-card.component.ts).
+Classes: PascalCase (ProgramCardComponent).
+Selectors: consistent prefix (e.g. <app-program-card>).
+
+Builder.io Usage
+Map only to components in src/app/components/.
+Document all new mappings.
+Inputs typed + defaults, outputs for events.
+
+Styling
+Scoped styles only (:host {}).
+Follow existing SCSS patterns.
+No inline styles.
 
 THESE ARE RULES YOU MUST FOLLOW
