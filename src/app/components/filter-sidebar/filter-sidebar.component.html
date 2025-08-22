@@ -9,38 +9,44 @@
   <div class="flex items-center justify-between mb-4">
     <label class="text-base text-gray-700">Accepting Applications</label>
     <div class="relative">
-      <input 
-        type="checkbox" 
+      <input
+        type="checkbox"
         [checked]="acceptingApplications"
         (change)="onAcceptingApplicationsChange()"
         class="sr-only"
-        id="accepting-apps">
-      
-      <div class="w-11 h-6 bg-gray-200 rounded-full cursor-pointer transition-colors duration-200"
-           [class.bg-blue-600]="acceptingApplications"
-           (click)="onAcceptingApplicationsChange()">
-        <div class="absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform duration-200"
-             [class.translate-x-5]="acceptingApplications">
-        </div>
+        id="accepting-apps"
+      />
+
+      <div
+        class="w-11 h-6 bg-gray-200 rounded-full cursor-pointer transition-colors duration-200"
+        [class.bg-blue-600]="acceptingApplications"
+        (click)="onAcceptingApplicationsChange()"
+      >
+        <div
+          class="absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform duration-200"
+          [class.translate-x-5]="acceptingApplications"
+        ></div>
       </div>
     </div>
   </div>
 
   <!-- Dynamic Filters -->
   <div class="space-y-0">
-    <app-filter 
+    <app-filter
       *ngFor="let filter of filters; trackBy: filterTrackBy"
       [filter]="filter"
       (filterChange)="onFilterChange($event)"
-      (optionToggle)="onOptionToggle($event)">
+      (optionToggle)="onOptionToggle($event)"
+    >
     </app-filter>
   </div>
 
   <!-- Reset Filters Button -->
-  <button 
+  <button
     *ngIf="hasActiveFilters"
     (click)="onResetFilters()"
-    class="w-full mt-6 py-3 px-4 border border-blue-600 text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors duration-200">
+    class="w-full mt-6 py-3 px-4 border border-blue-600 text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors duration-200"
+  >
     Reset filters
   </button>
 </aside>

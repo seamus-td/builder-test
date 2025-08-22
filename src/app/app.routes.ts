@@ -4,5 +4,5 @@ import { ProgramFinderComponent } from "./pages/program-finder/program-finder.co
 export const routes: Routes = [
   { path: "", redirectTo: "/programs", pathMatch: "full" },
   { path: "programs", component: ProgramFinderComponent },
-  { path: "**", redirectTo: "/programs" }
+  { path: "**", redirectTo: "/programs" },
 ];

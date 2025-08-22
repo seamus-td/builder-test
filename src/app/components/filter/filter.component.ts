@@ -27,7 +27,7 @@ export class FilterComponent {
     const isSelected = this.filter.selectedOptions.includes(option.value);
     if (isSelected) {
       this.filter.selectedOptions = this.filter.selectedOptions.filter(
-        (value) => value !== option.value
+        (value) => value !== option.value,
       );
     } else {
       this.filter.selectedOptions.push(option.value);
