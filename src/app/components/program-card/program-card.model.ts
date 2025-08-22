@@ -3,7 +3,7 @@ export interface Program {
   title: string;
   image: string;
   location: string;
-  terms: string;
+  season: string;
   description: string;
   featured?: boolean;
 }
