@@ -27,7 +27,8 @@ export class FilterComponent {
     this.expandedChange.emit(this.isExpanded);
   }
 
-  onOptionChange(option: FilterOption, checked: boolean) {
+  onOptionChange(option: FilterOption, event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
     option.checked = checked;
     this.optionsChange.emit(this.options);
   }
