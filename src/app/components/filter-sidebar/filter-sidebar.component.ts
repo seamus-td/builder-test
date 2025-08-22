@@ -76,7 +76,8 @@ export class FilterSidebarComponent {
     }
   ];
 
-  onAcceptingApplicationsChange(checked: boolean) {
+  onAcceptingApplicationsChange(event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
     this.acceptingApplications = checked;
     this.emitFiltersChange();
   }
