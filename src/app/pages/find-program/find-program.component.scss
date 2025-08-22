@@ -2,11 +2,12 @@
 
 // Ensure proper Material Icons display
 .material-icons {
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 }
 
 // Smooth transitions for interactive elements
-button, a {
+button,
+a {
   transition: all 0.2s ease-in-out;
 }
 
@@ -39,7 +40,7 @@ input[type="text"] {
 // Tab navigation active state
 nav button {
   position: relative;
-  
+
   &.border-b-2 {
     border-bottom-width: 2px;
   }
@@ -63,7 +64,7 @@ nav button {
   aside {
     order: 2;
   }
-  
+
   .flex-col.lg\\:flex-row {
     flex-direction: column;
   }
@@ -76,5 +77,5 @@ header {
 
 // Main content background matching design
 main {
-  background: linear-gradient(0deg, #F9FAFB 0%, #F9FAFB 100%), #FFF;
+  background: linear-gradient(0deg, #f9fafb 0%, #f9fafb 100%), #fff;
 }

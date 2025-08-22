@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
 export interface FilterOption {
   value: string;
@@ -9,14 +9,14 @@ export interface FilterOption {
 }
 
 @Component({
-  selector: 'app-filter',
+  selector: "app-filter",
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  templateUrl: "./filter.component.html",
+  styleUrls: ["./filter.component.scss"],
 })
 export class FilterComponent {
-  @Input() title: string = '';
+  @Input() title: string = "";
   @Input() options: FilterOption[] = [];
   @Input() isExpanded: boolean = false;
   @Output() optionsChange = new EventEmitter<FilterOption[]>();

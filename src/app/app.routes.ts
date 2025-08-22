@@ -4,5 +4,5 @@ import { FindProgramComponent } from "./pages/find-program/find-program.componen
 export const routes: Routes = [
   { path: "", component: FindProgramComponent },
   { path: "find-program", component: FindProgramComponent },
-  { path: "**", redirectTo: "" }
+  { path: "**", redirectTo: "" },
 ];
