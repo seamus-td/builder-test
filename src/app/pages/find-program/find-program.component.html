@@ -1,0 +1,200 @@
+<!-- Header -->
+<header class="bg-white shadow-sm border-b">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo and Brand -->
+      <div class="flex items-center gap-4">
+        <img
+          src="https://api.builder.io/api/v1/image/assets/TEMP/553cea6a2ab09982fbd472c741f4064354500843?width=64"
+          alt="University Logo"
+          class="w-8 h-8"
+        />
+        <h1 class="text-xl font-bold text-gray-900">TERRADOTTA UNIVERSITY</h1>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors"
+          >Programs</a
+        >
+        <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors"
+          >Health&Safety</a
+        >
+        <a
+          href="#"
+          class="text-gray-700 font-semibold border-b-2 border-blue-600 pb-1"
+          >Recommended Programs</a
+        >
+        <button class="text-gray-600 hover:text-gray-900 transition-colors">
+          <i class="material-icons text-2xl">notifications</i>
+        </button>
+        <img
+          src="https://api.builder.io/api/v1/image/assets/TEMP/1429005494c529ce932ce1527d609b135d077cc7?width=64"
+          alt="User Avatar"
+          class="w-8 h-8 rounded-full"
+        />
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="min-h-screen bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    <!-- Page Title -->
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Find a program</h1>
+
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar -->
+      <aside class="lg:w-80 flex-shrink-0">
+        <app-filter-sidebar
+          (filtersChange)="onFiltersChange($event)"
+        ></app-filter-sidebar>
+      </aside>
+
+      <!-- Main Content Area -->
+      <div class="flex-1 min-w-0">
+        <!-- Search and Sort Row -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-6">
+          <!-- Search Bar -->
+          <div class="flex-1 relative">
+            <div class="relative">
+              <i
+                class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-2xl"
+                >search</i
+              >
+              <input
+                type="text"
+                [(ngModel)]="searchQuery"
+                (input)="onSearchChange()"
+                placeholder="Search programs..."
+                class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- Sort Dropdown -->
+          <div class="flex items-center gap-3">
+            <span class="text-sm text-gray-600 whitespace-nowrap">Sort by</span>
+            <div class="relative">
+              <select
+                [(ngModel)]="selectedSort"
+                (change)="onSortChange()"
+                class="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              >
+                <option
+                  *ngFor="let option of sortOptions"
+                  [value]="option.value"
+                >
+                  {{ option.label }}
+                </option>
+              </select>
+              <svg
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M7.43443 10.36L8.00003 10.9256L12.5256 6.4L11.3944 5.2688L8.00003 8.6624L4.60563 5.2688L3.47443 6.4L7.43443 10.36Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="border-b border-gray-200 mb-6">
+          <nav class="flex gap-8">
+            <button
+              (click)="onTabChange('all')"
+              [class]="
+                selectedTab === 'all'
+                  ? 'border-blue-600 text-blue-600 font-semibold border-b-2 pb-3'
+                  : 'text-gray-600 hover:text-gray-900 pb-3'
+              "
+              class="transition-colors"
+            >
+              All
+            </button>
+            <button
+              (click)="onTabChange('previous')"
+              [class]="
+                selectedTab === 'previous'
+                  ? 'border-blue-600 text-blue-600 font-semibold border-b-2 pb-3'
+                  : 'text-gray-600 hover:text-gray-900 pb-3'
+              "
+              class="transition-colors"
+            >
+              Previously viewed
+            </button>
+            <button
+              (click)="onTabChange('saved')"
+              [class]="
+                selectedTab === 'saved'
+                  ? 'border-blue-600 text-blue-600 font-semibold border-b-2 pb-3'
+                  : 'text-gray-600 hover:text-gray-900 pb-3'
+              "
+              class="transition-colors"
+            >
+              Saved
+            </button>
+          </nav>
+        </div>
+
+        <!-- Results Header -->
+        <div
+          class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6"
+        >
+          <!-- Active Filters and Remove All -->
+          <div class="flex flex-wrap items-center gap-3">
+            <!-- Active Filter Tags -->
+            <div
+              *ngFor="let filter of activeFilters"
+              class="inline-flex items-center gap-2 bg-gray-200 rounded-full px-3 py-1"
+            >
+              <span class="text-sm text-gray-900">{{ filter.label }}</span>
+              <button
+                (click)="removeFilter(filter)"
+                class="text-gray-600 hover:text-gray-800 transition-colors"
+              >
+                <span class="text-xs">×</span>
+              </button>
+            </div>
+
+            <!-- Remove All Filters Link -->
+            <button
+              *ngIf="activeFilters.length > 0"
+              (click)="removeAllFilters()"
+              class="text-sm text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+            >
+              Remove filters
+            </button>
+          </div>
+
+          <!-- Results Count -->
+          <div class="text-base font-semibold text-gray-600 whitespace-nowrap">
+            {{ resultCount }} Results
+          </div>
+        </div>
+
+        <!-- Programs Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <app-program-card
+            *ngFor="let program of filteredPrograms"
+            [program]="program"
+            class="transition-transform hover:scale-105"
+          ></app-program-card>
+        </div>
+
+        <!-- No Results Message -->
+        <div *ngIf="filteredPrograms.length === 0" class="text-center py-12">
+          <div class="text-gray-500 text-lg mb-4">No programs found</div>
+          <div class="text-gray-400">
+            Try adjusting your search criteria or filters
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
