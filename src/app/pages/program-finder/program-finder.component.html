@@ -1,0 +1,70 @@
+<div class="min-h-screen bg-gray-50">
+  <!-- Header -->
+  <app-header></app-header>
+
+  <!-- Main Content -->
+  <main class="max-w-screen-2xl mx-auto px-6 py-8">
+    <!-- Page Title -->
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Find a program</h1>
+
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Filter Sidebar -->
+      <app-filter-sidebar class="flex-shrink-0 lg:w-80"></app-filter-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="flex-1 min-w-0">
+        <!-- Search Bar -->
+        <div class="mb-6">
+          <app-enhanced-search 
+            (search)="onSearch($event)"
+            class="block w-full max-w-2xl">
+          </app-enhanced-search>
+        </div>
+
+        <!-- Tab Navigation and Sort -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+          <!-- Tab Navigation -->
+          <app-tab-navigation (tabChange)="onTabChange($event)"></app-tab-navigation>
+
+          <!-- Sort dropdown -->
+          <div class="flex items-center gap-4">
+            <span class="text-sm text-gray-600">Sort by</span>
+            <select class="border border-gray-300 rounded-md px-4 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-0">
+              <option>Alphabetical (A - Z)</option>
+              <option>Alphabetical (Z - A)</option>
+              <option>Most Popular</option>
+              <option>Newest</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Active Filters -->
+        <div class="flex flex-wrap items-center gap-4 mb-6" *ngIf="hasActiveFilters">
+          <div class="flex items-center bg-gray-200 rounded-full px-3 py-1">
+            <span class="text-sm text-gray-900">Australia</span>
+            <button class="ml-2 text-gray-600 hover:text-gray-900">
+              <span class="text-xs">×</span>
+            </button>
+          </div>
+          <button class="text-sm text-blue-600 font-semibold hover:text-blue-800">
+            Remove filters
+          </button>
+        </div>
+
+        <!-- Results Count -->
+        <div class="flex justify-between md:justify-end items-center mb-6">
+          <span class="text-gray-700 font-semibold">{{ programs().length }} Results</span>
+        </div>
+
+        <!-- Program Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+          <app-program-card 
+            *ngFor="let program of programs()" 
+            [program]="program"
+            class="flex justify-center">
+          </app-program-card>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

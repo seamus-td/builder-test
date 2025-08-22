@@ -1,0 +1,9 @@
+<div class="flex items-center gap-6">
+  <button
+    *ngFor="let tab of tabs()"
+    (click)="selectTab(tab.id)"
+    [class]="getTabClasses(tab)"
+  >
+    {{ tab.label }}
+  </button>
+</div>
