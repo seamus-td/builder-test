@@ -1,0 +1,157 @@
+<!-- Header (would typically be in app layout) -->
+<header class="bg-white shadow-sm border-b">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo and Title -->
+      <div class="flex items-center gap-4">
+        <img src="https://api.builder.io/api/v1/image/assets/TEMP/553cea6a2ab09982fbd472c741f4064354500843?width=64" 
+             alt="University Logo" 
+             class="w-8 h-8">
+        <h1 class="text-xl font-bold text-gray-900">TERRADOTTA UNIVERSITY</h1>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex items-center gap-6">
+        <a href="#" class="text-gray-600 hover:text-gray-900">Programs</a>
+        <a href="#" class="text-gray-600 hover:text-gray-900">Health&Safety</a>
+        <a href="#" class="text-gray-600 hover:text-gray-900 font-semibold border-b-2 border-blue-600">Recommended Programs</a>
+        <i class="material-icons text-gray-600">notifications</i>
+        <img src="https://api.builder.io/api/v1/image/assets/TEMP/1429005494c529ce932ce1527d609b135d077cc7?width=64" 
+             alt="User Avatar" 
+             class="w-8 h-8 rounded-full">
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="bg-gray-50 min-h-screen">
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    
+    <!-- Page Title -->
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Find a program</h1>
+
+    <div class="flex gap-8">
+      
+      <!-- Filter Sidebar -->
+      <app-filter-sidebar
+        [filters]="filters()"
+        [acceptingApplications]="acceptingApplications()"
+        (filtersChange)="onFiltersChange($event)"
+        (acceptingApplicationsChange)="onAcceptingApplicationsChange($event)"
+        (resetFilters)="onResetFilters()">
+      </app-filter-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="flex-1">
+        
+        <!-- Search Bar -->
+        <div class="relative mb-8">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <i class="material-icons text-gray-400">search</i>
+          </div>
+          <input 
+            type="text" 
+            [(ngModel)]="searchTerm"
+            placeholder="Search programs..."
+            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white">
+        </div>
+
+        <!-- Controls Row -->
+        <div class="flex items-center justify-between mb-6">
+          
+          <!-- View Tabs -->
+          <div class="flex">
+            <button 
+              (click)="onTabChange('all')"
+              class="px-1 py-2 text-base font-medium border-b-2 transition-colors"
+              [class.text-blue-600]="selectedTab() === 'all'"
+              [class.border-blue-600]="selectedTab() === 'all'"
+              [class.text-gray-600]="selectedTab() !== 'all'"
+              [class.border-transparent]="selectedTab() !== 'all'">
+              All
+            </button>
+            <button 
+              (click)="onTabChange('previously-viewed')"
+              class="px-1 py-2 ml-6 text-base font-medium border-b-2 transition-colors"
+              [class.text-blue-600]="selectedTab() === 'previously-viewed'"
+              [class.border-blue-600]="selectedTab() === 'previously-viewed'"
+              [class.text-gray-600]="selectedTab() !== 'previously-viewed'"
+              [class.border-transparent]="selectedTab() !== 'previously-viewed'">
+              Previously viewed
+            </button>
+            <button 
+              (click)="onTabChange('saved')"
+              class="px-1 py-2 ml-6 text-base font-medium border-b-2 transition-colors"
+              [class.text-blue-600]="selectedTab() === 'saved'"
+              [class.border-blue-600]="selectedTab() === 'saved'"
+              [class.text-gray-600]="selectedTab() !== 'saved'"
+              [class.border-transparent]="selectedTab() !== 'saved'">
+              Saved
+            </button>
+          </div>
+
+          <!-- Sort Controls -->
+          <div class="flex items-center gap-4">
+            <span class="text-sm text-gray-600">Sort by</span>
+            <div class="relative">
+              <select 
+                [(ngModel)]="sortBy"
+                (change)="onSortChange($any($event.target).value)"
+                class="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 text-base text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="alphabetical">Alphabetical (A - Z)</option>
+                <option value="newest">Newest First</option>
+                <option value="relevance">Most Relevant</option>
+              </select>
+              <i class="material-icons absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Applied Filters -->
+        <div *ngIf="appliedFilters().length > 0" class="flex items-center gap-2 mb-6">
+          <div *ngFor="let filter of appliedFilters()" 
+               class="inline-flex items-center gap-2 bg-gray-200 rounded-full px-3 py-1">
+            <span class="text-sm font-medium text-gray-900">{{ filter.label }}</span>
+            <button 
+              (click)="removeAppliedFilter(filter)"
+              class="text-gray-600 hover:text-gray-900">
+              <span class="text-xs">×</span>
+            </button>
+          </div>
+          <button 
+            (click)="onResetFilters()"
+            class="text-sm font-semibold text-blue-600 hover:text-blue-700 ml-2">
+            Remove filters
+          </button>
+        </div>
+
+        <!-- Results Count -->
+        <div class="flex justify-end mb-6">
+          <span class="text-base font-semibold text-gray-600">{{ filteredPrograms().length }} Results</span>
+        </div>
+
+        <!-- Programs Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <app-program-card 
+            *ngFor="let program of filteredPrograms(); trackBy: programTrackBy"
+            [program]="program">
+          </app-program-card>
+        </div>
+
+        <!-- No Results Message -->
+        <div *ngIf="filteredPrograms().length === 0" 
+             class="text-center py-12">
+          <i class="material-icons text-6xl text-gray-300 mb-4">search_off</i>
+          <h3 class="text-xl font-medium text-gray-600 mb-2">No programs found</h3>
+          <p class="text-gray-500">Try adjusting your filters or search terms</p>
+          <button 
+            (click)="onResetFilters()"
+            class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+            Clear all filters
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
