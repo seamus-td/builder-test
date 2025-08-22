@@ -1,0 +1,21 @@
+/* Toggle switch styles */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+/* Custom toggle styling is handled via Tailwind classes in the template */
+
+/* Box shadow to match design */
+:host {
+  .bg-white {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Ensure proper spacing for filter groups */
+app-filter {
+  display: block;
+}
